@@ -26,7 +26,8 @@ curl_close($ch);
 
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
-$a_listUrls = $autorsListDocument->find('div.list-row.attacments a');
+$a_listUrls = $autorsListDocument->find('div.attacments a');
+echo 'Hi';
 foreach($a_listUrls as $a_urlAutor) {
   $pqaurl_autor = pq($a_urlAutor);
   $urlAutor = $pqaurl_autor->attr('href');
