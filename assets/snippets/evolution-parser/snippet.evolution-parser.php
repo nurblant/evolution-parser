@@ -27,8 +27,9 @@ curl_close($ch);
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('div.list-row attacments a');
-foreach($a_listUrls as $urlAutor) {
-  //$urlAutor = 'http://zonanot.ru/notespiano/classika/43-classical/m/51-mozart';
+foreach($a_listUrls as $a_urlAutor) {
+  $pqaurl_autor = pq($a_urlAutor);
+  $urlAutor = $pqaurl_autor->attr('href');
   $template = 4;
   $parent = 1;
   $publiched = 1;
