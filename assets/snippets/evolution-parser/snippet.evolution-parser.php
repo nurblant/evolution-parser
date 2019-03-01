@@ -27,10 +27,10 @@ curl_close($ch);
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('div.attacments a');
-echo 'Hi';
 foreach($a_listUrls as $a_urlAutor) {
   $pqaurl_autor = pq($a_urlAutor);
   $urlAutor = $pqaurl_autor->attr('href');
+  echo $urlAutor;
   $template = 4;
   $parent = 1;
   $publiched = 1;
