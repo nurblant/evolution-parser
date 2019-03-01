@@ -32,9 +32,12 @@ $doc = new CakeMODx;
     $fields = array(
       'alias' => $id.'-'.$alias,
       //'pagetitle' => $pagetitle,
-      //'content' => $outPage,
+      'content' => 'Тестовое содержимое ресурса',
     );
     $doc->updateDocument($id,$fields);
+    $doc->setTV(5, $id, 'Link');
+    $doc->deleteDocument(16);
+    $doc->deleteDocument(17);
     $doc->updateCache();
   }
     
