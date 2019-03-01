@@ -14,9 +14,9 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/CakeMODx.class.php');
 include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/functions.php');
 
-$urlAutor = 'http://zonanot.ru/notespiano/classika/40-classical/a/97-adan';
+$urlAutor = 'http://zonanot.ru/notespiano/classika/43-classical/m/51-mozart';
 $template = 4;
-$parent = 10;
+$parent = 19;
 $publiched = 0;
 $domain = 'http://zonanot.ru';
 $media_dir = 'assets/files/';
