@@ -19,6 +19,7 @@ $template = 4;
 $parent = 10;
 $publiched = 0;
 $domain = 'http://zonanot.ru';
+$media_dir = 'assets/files/';
 
 // curl запрос
 $ch = curl_init(); 
@@ -50,30 +51,37 @@ foreach($a_urls as $a_url) {
   $noteDocument = phpQuery::newDocument($notePage);
   $pageTitle = $noteDocument->find('.page-header h1')->text();
 
-  $doc = new CakeMODx;
-  $fields = array(
-    'pagetitle' => $pageTitle,
-    'template' => $template,
-    'parent' => $parent,
-    'published' => $publiched,
-    //'link_attributes' => $link,
-    //'menutitle' => $strn
-  );
-  $id = $doc->newDocument($fields);
-
-  if ($id) {
-    echo 'Документ создан '.$id;
-    $alias = $trans->stripAlias('Тестовый ресурс', $char_restrict, $word_separator);
-    // перезапись ресурса
+  $downloadUrl = $noteDocument->find('#noti a')->attr('href');
+  if(substr($downloadUrl, -3, 3) == 'pdf') {
+    $doc = new CakeMODx;
     $fields = array(
-      'alias' => $id.'-'.$alias,
-      //'pagetitle' => $pagetitle,
-      'content' => 'Тестовое содержимое ресурса',
+      'pagetitle' => $pageTitle,
+      'template' => $template,
+      'parent' => $parent,
+      'published' => $publiched,
+      //'link_attributes' => $link,
+      //'menutitle' => $strn
     );
-    $doc->updateDocument($id,$fields);
-    $doc->setTV(5, $id, 'Link');
-    $doc->updateCache();
+    $id = $doc->newDocument($fields);
+
+    if ($id) {
+      echo 'Документ создан '.$id;
+      $alias = $trans->stripAlias($pageTitle, $char_restrict, $word_separator);
+      // перезапись ресурса
+      $fields = array(
+        'alias' => $id.'-'.$alias,
+        //'pagetitle' => $pagetitle,
+        'content' => 'Тестовое содержимое ресурса',
+      );
+      $doc->updateDocument($id,$fields);
+      $doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+      $doc->updateCache();
+    }
+  } else {
+    echo $pageTitle.'Не пдф!';
   }
+
+  
   
 }
     

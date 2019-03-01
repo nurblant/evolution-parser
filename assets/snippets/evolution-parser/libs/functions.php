@@ -20,3 +20,33 @@ if(!empty($override_tv)) {
 }
 
 $trans->loadTable($table_name, $remove_periods);
+
+function saveMedia($url, $alias, $id, $media_dir) {
+    $pi = pathinfo($url); 
+    $ext = $pi['extension']; 
+    $name = $pi['filename']; 
+  
+    $ch = curl_init(); 
+  
+    curl_setopt($ch, CURLOPT_URL, $url); 
+    curl_setopt($ch, CURLOPT_HEADER, false); 
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER, true); 
+    curl_setopt($ch, CURLOPT_AUTOREFERER, true); 
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+  
+    $opt = curl_exec($ch); 
+  
+    curl_close($ch);
+  
+    $saveFile = $media_dir.$id.'/'.$id.'-'.$alias.'.'.$ext; 
+    /*if(preg_match("/[^0-9a-z\.\_\-]/i", $saveFile)) 
+      $saveFile = md5(microtime(true)).'.'.$ext; */
+  
+    $handle = fopen($modx->config["base_path"].$saveFile, 'wb'); 
+    fwrite($handle, $opt); 
+    fclose($handle);
+    //return $saveFile;
+    
+    return $saveFile;
+  }
