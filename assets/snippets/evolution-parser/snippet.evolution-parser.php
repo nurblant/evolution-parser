@@ -33,15 +33,26 @@ curl_close($ch);
 // парсинг
 $autorDocument = phpQuery::newDocument($autorPage);
 $a_urls = $autorDocument->find('div.attacments a.mod-articles-category-title');
+
 foreach($a_urls as $a_url) {
+
   $pqaurl = pq($a_url);
   echo $domain.($pqaurl->attr('href')).'<br>';
-}
-return 'Ok';
 
-$doc = new CakeMODx;
+  // curl запрос
+  $ch = curl_init(); 
+  curl_setopt($ch, CURLOPT_URL, trim($domain.($pqaurl->attr('href')))); 
+  curl_setopt($ch, CURLOPT_HEADER, false); 
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
+  $notePage = curl_exec($ch); 
+  curl_close($ch);
+  $noteDocument = phpQuery::newDocument($notePage);
+  $pageTitle = $noteDocument->find('.page-header h1')->text();
+
+  $doc = new CakeMODx;
   $fields = array(
-    'pagetitle' => 'Тестовый ресурс',
+    'pagetitle' => $pageTitle,
     'template' => $template,
     'parent' => $parent,
     'published' => $publiched,
@@ -63,5 +74,7 @@ $doc = new CakeMODx;
     $doc->setTV(5, $id, 'Link');
     $doc->updateCache();
   }
+  
+}
     
 return $output;
