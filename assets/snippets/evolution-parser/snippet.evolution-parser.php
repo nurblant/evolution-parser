@@ -29,11 +29,11 @@ curl_close($ch);
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('div.attacments a');
+echo $a_listUrls;
 $iY = 0;
 foreach($a_listUrls as $a_urlAutor) {
-  echo 'Like'.$iY;
+  
   if($iY>=$startY && $i<($startY+$limitY)) {
-    echo 'Like'.$iY;
     $domain = 'http://zonanot.ru';
     $pqaurl_autor = pq($a_urlAutor);
     $urlAutor = $domain.$pqaurl_autor->attr('href');
@@ -51,7 +51,6 @@ foreach($a_listUrls as $a_urlAutor) {
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
     $autorPage = curl_exec($ch); 
     curl_close($ch);
-
 
     // парсинг
     $autorDocument = phpQuery::newDocument($autorPage);
