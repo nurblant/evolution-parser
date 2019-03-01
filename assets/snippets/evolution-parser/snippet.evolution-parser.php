@@ -31,7 +31,7 @@ $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('div.attacments a');
 $i = 0;
 foreach($a_listUrls as $a_urlAutor) {
-  if(i>=$start && i<($start+$limit)) {
+  if($i>=$start && $i<($start+$limit)) {
     $domain = 'http://zonanot.ru';
     $pqaurl_autor = pq($a_urlAutor);
     $urlAutor = $domain.$pqaurl_autor->attr('href');
