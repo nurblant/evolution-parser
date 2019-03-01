@@ -10,8 +10,8 @@
  */
 if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 
-include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/phpQuery.php');
-include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/CakeMODx.class.php');
+include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/phpQuery.php');
+include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/CakeMODx.class.php');
 
 $doc = new CakeMODx;
   $fields = array(
