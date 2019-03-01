@@ -13,4 +13,19 @@ if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/phpQuery.php');
 include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/CakeMODx.class.php');
 
+$doc = new CakeMODx;
+  $fields = array(
+    'pagetitle' => 'Тестовый ресурс',
+    'template' => 6,
+    'parent' => 1,
+    'published' => 0,
+    //'link_attributes' => $link,
+    //'menutitle' => $strn
+  );
+  $id = $doc->newDocument($fields);
+
+  if ($id) {
+    echo 'Документ создан '.$id;
+  }
+    
 return $output;
