@@ -31,7 +31,7 @@ $doc = new CakeMODx;
     // перезапись ресурса
     $fields = array(
       'alias' => $id.'-'.$alias,
-      'pagetitle' => $pagetitle,
+      //'pagetitle' => $pagetitle,
       //'content' => $outPage,
     );
     $doc->updateDocument($id,$fields);
