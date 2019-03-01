@@ -17,7 +17,7 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 $autorsList = 'http://zonanot.ru/notespiano/classika';
 // curl запрос
 $ch = curl_init(); 
-curl_setopt($ch, CURLOPT_URL, trim($urlAutor)); 
+curl_setopt($ch, CURLOPT_URL, trim($autorsList)); 
 curl_setopt($ch, CURLOPT_HEADER, false); 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
@@ -26,7 +26,7 @@ curl_close($ch);
 
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
-$a_listUrls = $autorsListDocument->find('div.list-row attacments a');
+$a_listUrls = $autorsListDocument->find('div.list-row.attacments a');
 foreach($a_listUrls as $a_urlAutor) {
   $pqaurl_autor = pq($a_urlAutor);
   $urlAutor = $pqaurl_autor->attr('href');
