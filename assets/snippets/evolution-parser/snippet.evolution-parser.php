@@ -15,8 +15,8 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/functions.php');
 
 $autorsList = 'http://zonanot.ru/notespiano/classika';
-$start = 0;
-$limit = 5;
+$startY = 0;
+$limitY = 5;
 // curl запрос
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, trim($autorsList)); 
@@ -29,10 +29,10 @@ curl_close($ch);
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('div.attacments a');
-$i = 0;
+$iY = 0;
 foreach($a_listUrls as $a_urlAutor) {
-  if($i>=$start && $i<($start+$limit)) {
-    echo 'Like'.$i;
+  if($iY>=$startY && $i<($startY+$limitY)) {
+    echo 'Like'.$iY;
     $domain = 'http://zonanot.ru';
     $pqaurl_autor = pq($a_urlAutor);
     $urlAutor = $domain.$pqaurl_autor->attr('href');
@@ -127,7 +127,7 @@ foreach($a_listUrls as $a_urlAutor) {
       
     } 
   }
-  $i = $i+1;
+  $iY = $iY+1;
   
 }
     
