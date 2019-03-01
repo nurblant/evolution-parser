@@ -126,7 +126,7 @@ foreach($a_listUrls as $a_urlAutor) {
       
     } 
   }
-  i++;
+  $i++;
   
 }
     
