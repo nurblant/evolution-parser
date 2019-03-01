@@ -31,7 +31,7 @@ curl_close($ch);
 
 // парсинг
 $autorDocument = phpQuery::newDocument($autorPage);
-$a_urls = $autorDocument->find('div.attacments a.mod-articles-category-title');
+$a_urls = $autor->find('div.attacments a.mod-articles-category-title');
 foreach($a_urls as $a_url) {
   $pqaurl = pq($a_url);
   echo ($pqaurl->attr('href')).'<br>';
