@@ -18,6 +18,7 @@ $urlAutor = 'http://zonanot.ru/notespiano/classika/40-classical/a/97-adan';
 $template = 4;
 $parent = 10;
 $publiched = 0;
+$domain = 'http://zonanot.ru';
 
 // curl запрос
 $ch = curl_init(); 
@@ -34,7 +35,7 @@ $autorDocument = phpQuery::newDocument($autorPage);
 $a_urls = $autorDocument->find('div.attacments a.mod-articles-category-title');
 foreach($a_urls as $a_url) {
   $pqaurl = pq($a_url);
-  echo ($pqaurl->attr('href')).'<br>';
+  echo $domain.($pqaurl->attr('href')).'<br>';
 }
 return 'Ok';
 
