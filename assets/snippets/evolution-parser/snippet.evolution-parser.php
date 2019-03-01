@@ -14,12 +14,36 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/CakeMODx.class.php');
 include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/functions.php');
 
+$urlAutor = 'http://zonanot.ru/notespiano/classika/40-classical/a/97-adan';
+$template = 4;
+$parent = 10;
+$publiched = 0;
+
+// curl запрос
+$ch = curl_init(); 
+curl_setopt($ch, CURLOPT_URL, trim($urlAutor)); 
+curl_setopt($ch, CURLOPT_HEADER, false); 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
+$autorPage = curl_exec($ch); 
+curl_close($ch);
+
+
+// парсинг
+$autorDocument = phpQuery::newDocument($autorPage);
+$a_urls = $document->find('div.attacments a.mod-articles-category-title');
+foreach($a_urls as $a_url) {
+  $pqaurl = pq($a_url);
+  echo ($pqaurl->attr('href')).'<br>';
+}
+return 'Ok';
+
 $doc = new CakeMODx;
   $fields = array(
     'pagetitle' => 'Тестовый ресурс',
-    'template' => 4,
-    'parent' => 1,
-    'published' => 0,
+    'template' => $template,
+    'parent' => $parent,
+    'published' => $publiched,
     //'link_attributes' => $link,
     //'menutitle' => $strn
   );
