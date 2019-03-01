@@ -17,7 +17,7 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 $doc = new CakeMODx;
   $fields = array(
     'pagetitle' => 'Тестовый ресурс',
-    'template' => 6,
+    'template' => 4,
     'parent' => 1,
     'published' => 0,
     //'link_attributes' => $link,
@@ -36,8 +36,6 @@ $doc = new CakeMODx;
     );
     $doc->updateDocument($id,$fields);
     $doc->setTV(5, $id, 'Link');
-    $doc->deleteDocument(16);
-    $doc->deleteDocument(17);
     $doc->updateCache();
   }
     
