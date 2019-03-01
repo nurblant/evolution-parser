@@ -74,8 +74,8 @@ foreach($a_urls as $a_url) {
         'content' => 'Тестовое содержимое ресурса',
       );
       $doc->updateDocument($id,$fields);
-      echo $domain.$downloadUrl;
-      //$doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+      //echo $domain.$downloadUrl;
+      $doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
       $doc->updateCache();
     }
   } else {

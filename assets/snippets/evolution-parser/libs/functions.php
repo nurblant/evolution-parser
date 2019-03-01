@@ -38,7 +38,8 @@ function saveMedia($url, $alias, $id, $media_dir) {
     $opt = curl_exec($ch); 
   
     curl_close($ch);
-  
+    
+    mkdir($media_dir.$id, 0700);
     $saveFile = $media_dir.$id.'/'.$id.'-'.$alias.'.'.$ext; 
     /*if(preg_match("/[^0-9a-z\.\_\-]/i", $saveFile)) 
       $saveFile = md5(microtime(true)).'.'.$ext; */
