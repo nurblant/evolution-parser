@@ -31,6 +31,7 @@ $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('div.attacments a');
 $iY = 0;
 foreach($a_listUrls as $a_urlAutor) {
+  echo 'Like'.$iY;
   if($iY>=$startY && $i<($startY+$limitY)) {
     echo 'Like'.$iY;
     $domain = 'http://zonanot.ru';
