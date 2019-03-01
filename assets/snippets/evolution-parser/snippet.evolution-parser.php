@@ -28,13 +28,13 @@ curl_close($ch);
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('div.attacments a');
 foreach($a_listUrls as $a_urlAutor) {
+  $domain = 'http://zonanot.ru';
   $pqaurl_autor = pq($a_urlAutor);
-  $urlAutor = $pqaurl_autor->attr('href');
+  $urlAutor = $domain.$pqaurl_autor->attr('href');
   echo $urlAutor;
   $template = 4;
   $parent = 1;
   $publiched = 1;
-  $domain = 'http://zonanot.ru';
   $media_dir = 'assets/files/';
 
   // curl запрос
