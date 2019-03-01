@@ -33,12 +33,12 @@ echo $a_listUrls;
 $iY = 0;
 foreach($a_listUrls as $a_urlAutor) {
   
-  if($iY>=$startY && $i<($startY+$limitY)) {
+  if($iY>=$startY && $iY<($startY+$limitY)) {
     $domain = 'http://zonanot.ru';
     $pqaurl_autor = pq($a_urlAutor);
     $urlAutor = $domain.$pqaurl_autor->attr('href');
     echo $urlAutor;
-    $template = 4;
+    $template = 6;
     $parent = 1;
     $publiched = 1;
     $media_dir = 'assets/files/';
@@ -97,30 +97,30 @@ foreach($a_listUrls as $a_urlAutor) {
           );
           $doc->updateDocument($id,$fields);
           //echo $domain.$downloadUrl;
-          $doc->setTV(5, $id, $autorName);
+          $doc->setTV(6, $id, $autorName);
           if(substr($downloadUrl, -3, 3) == 'pdf') {
-            $doc->setTV(6, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(7, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           }
           if(substr($downloadUrl, -3, 3) == 'doc') {
-            $doc->setTV(10, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(13, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           } 
           if(substr($downloadUrl, -3, 3) == 'zip') {
-            $doc->setTV(9, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(8, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           } 
           if(substr($downloadUrl, -3, 3) == 'rar') {
-            $doc->setTV(9, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(8, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           } 
           if(substr($downloadUrl, -4, 4) == 'jpeg') {
-            $doc->setTV(7, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           } 
           if(substr($downloadUrl, -4, 4) == 'JPEG') {
-            $doc->setTV(7, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           } 
           if(substr($downloadUrl, -3, 3) == 'png') {
-            $doc->setTV(7, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           } 
           if(substr($downloadUrl, -3, 3) == 'jpg') {
-            $doc->setTV(7, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+            $doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
           } 
           $doc->updateCache();
         }
