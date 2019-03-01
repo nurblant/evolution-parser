@@ -52,6 +52,7 @@ foreach($a_urls as $a_url) {
   $pageTitle = $noteDocument->find('.page-header h1')->text();
 
   $downloadUrl = $noteDocument->find('#noti a')->attr('href');
+  $autorName = $noteDocument->find('.breadcrumbs a:last')->text();
   if(substr($downloadUrl, -3, 3) == 'pdf') {
     $doc = new CakeMODx;
     $fields = array(
@@ -75,7 +76,8 @@ foreach($a_urls as $a_url) {
       );
       $doc->updateDocument($id,$fields);
       //echo $domain.$downloadUrl;
-      $doc->setTV(5, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
+      $doc->setTV(5, $id, $autorName);
+      $doc->setTV(6, $id, saveMedia($domain.$downloadUrl, $alias, $id, $media_dir));
       $doc->updateCache();
     }
   } else {
