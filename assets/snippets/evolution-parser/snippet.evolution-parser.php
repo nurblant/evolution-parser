@@ -16,7 +16,7 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 
 $autorsList = 'https://instrukciya-primeneniyu.com/podbor-preparatov';
 $startY = 0;
-$limitY = 3;
+$limitY = 9;
 // curl запрос
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, trim($autorsList)); 
