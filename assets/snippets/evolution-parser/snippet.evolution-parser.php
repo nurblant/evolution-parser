@@ -31,64 +31,64 @@ $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('.entry-content li.menu-item a');
 echo $a_listUrls;
 $iY = 0;
-foreach($a_listUrls as $a_urlAutor) {
+// foreach($a_listUrls as $a_urlAutor) {
   
-  if($iY>=$startY && $iY<($startY+$limitY)) {
-    $domain = 'https://instrukciya-primeneniyu.com';
-    $pqaurl_autor = pq($a_urlAutor);
-    $urlAutor = $domain.$pqaurl_autor->attr('href');
-    echo $urlAutor;
-    $template = 4;
-    $parent = 1;
-    $publiched = 1;
-    //$media_dir = 'assets/files/';
+//   if($iY>=$startY && $iY<($startY+$limitY)) {
+//     $domain = 'https://instrukciya-primeneniyu.com';
+//     $pqaurl_autor = pq($a_urlAutor);
+//     $urlAutor = $domain.$pqaurl_autor->attr('href');
+//     echo $urlAutor;
+//     $template = 4;
+//     $parent = 1;
+//     $publiched = 1;
+//     //$media_dir = 'assets/files/';
 
-    // curl запрос
-    $ch = curl_init(); 
-    curl_setopt($ch, CURLOPT_URL, trim($urlAutor)); 
-    curl_setopt($ch, CURLOPT_HEADER, false); 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
-    $autorPage = curl_exec($ch); 
-    curl_close($ch);
+//     // curl запрос
+//     $ch = curl_init(); 
+//     curl_setopt($ch, CURLOPT_URL, trim($urlAutor)); 
+//     curl_setopt($ch, CURLOPT_HEADER, false); 
+//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+//     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
+//     $autorPage = curl_exec($ch); 
+//     curl_close($ch);
 
-    // парсинг
-    $autorDocument = phpQuery::newDocument($autorPage);
-    $a_urls = $autorDocument->find('.entry-title a');
+//     // парсинг
+//     $autorDocument = phpQuery::newDocument($autorPage);
+//     $a_urls = $autorDocument->find('.entry-title a');
 
-    foreach($a_urls as $a_url) {
+//     foreach($a_urls as $a_url) {
 
-      $pqaurl = pq($a_url);
-      echo $domain.($pqaurl->attr('href')).'<br>';
+//       $pqaurl = pq($a_url);
+//       echo $domain.($pqaurl->attr('href')).'<br>';
 
-      // curl запрос
-      $ch = curl_init(); 
-      curl_setopt($ch, CURLOPT_URL, trim($domain.($pqaurl->attr('href')))); 
-      curl_setopt($ch, CURLOPT_HEADER, false); 
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
-      $notePage = curl_exec($ch); 
-      curl_close($ch);
-      $noteDocument = phpQuery::newDocument($notePage);
-      $pageTitle = $noteDocument->find('.entry-title a')->text();
+//       // curl запрос
+//       $ch = curl_init(); 
+//       curl_setopt($ch, CURLOPT_URL, trim($domain.($pqaurl->attr('href')))); 
+//       curl_setopt($ch, CURLOPT_HEADER, false); 
+//       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+//       curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
+//       $notePage = curl_exec($ch); 
+//       curl_close($ch);
+//       $noteDocument = phpQuery::newDocument($notePage);
+//       $pageTitle = $noteDocument->find('.entry-title a')->text();
 
-      //$downloadUrl = $noteDocument->find('#noti a')->attr('href');
-      //$autorName = $noteDocument->find('.breadcrumbs a:last')->text();
+//       //$downloadUrl = $noteDocument->find('#noti a')->attr('href');
+//       //$autorName = $noteDocument->find('.breadcrumbs a:last')->text();
       
-        $doc = new CakeMODx;
-        $fields = array(
-          'pagetitle' => $pageTitle,
-          'template' => $template,
-          'parent' => $parent,
-          'published' => $publiched,
-          //'link_attributes' => $link,
-          //'menutitle' => $strn
-        );
-        $id = $doc->newDocument($fields);
-    } 
-  }
-  $iY = $iY+1;
+//         $doc = new CakeMODx;
+//         $fields = array(
+//           'pagetitle' => $pageTitle,
+//           'template' => $template,
+//           'parent' => $parent,
+//           'published' => $publiched,
+//           //'link_attributes' => $link,
+//           //'menutitle' => $strn
+//         );
+//         $id = $doc->newDocument($fields);
+//     } 
+//   }
+//   $iY = $iY+1;
   
-}
+// }
     
 return $output;
