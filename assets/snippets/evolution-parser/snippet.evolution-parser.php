@@ -29,7 +29,7 @@ curl_close($ch);
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('li.menu-item a');
-echo $a_listUrls;
+echo "<pre>".$a_listUrls."</pre>";
 $iY = 0;
 foreach($a_listUrls as $a_urlAutor) {
   
@@ -37,7 +37,7 @@ foreach($a_listUrls as $a_urlAutor) {
     //$domain = 'https://instrukciya-primeneniyu.com';
     $pqaurl_autor = pq($a_urlAutor);
     $urlAutor = $domain.$pqaurl_autor->attr('href');
-    echo $urlAutor;
+    echo "<pre>".$urlAutor."</pre>";
     $template = 5;
     $parent = 1;
     $publiched = 1;
