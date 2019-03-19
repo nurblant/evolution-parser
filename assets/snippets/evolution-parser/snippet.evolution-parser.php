@@ -1,6 +1,6 @@
 <?php
 /**
- * iforuse
+ * evolution-parser
  *
  * @category  parser
  * @version   1.0.0
@@ -10,9 +10,9 @@
  */
 if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 
-include_once ($modx->config["base_path"].'assets/snippets/iforuse/libs/phpQuery.php');
-include_once ($modx->config["base_path"].'assets/snippets/iforuse/libs/CakeMODx.class.php');
-include_once ($modx->config["base_path"].'assets/snippets/iforuse/libs/functions.php');
+include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/phpQuery.php');
+include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/CakeMODx.class.php');
+include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/functions.php');
 
 $autorsList = 'https://instrukciya-primeneniyu.com/podbor-preparatov';
 $startY = 0;
