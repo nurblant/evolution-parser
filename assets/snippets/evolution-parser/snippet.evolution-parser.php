@@ -30,31 +30,31 @@ curl_close($ch);
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('li.menu-item a');
 echo $a_listUrls;
-//$iY = 0;
-// foreach($a_listUrls as $a_urlAutor) {
+$iY = 0;
+foreach($a_listUrls as $a_urlAutor) {
   
-//   if($iY>=$startY && $iY<($startY+$limitY)) {
-//     $domain = 'https://instrukciya-primeneniyu.com';
-//     $pqaurl_autor = pq($a_urlAutor);
-//     $urlAutor = $domain.$pqaurl_autor->attr('href');
-//     echo $urlAutor;
-//     $template = 4;
-//     $parent = 1;
-//     $publiched = 1;
-//     //$media_dir = 'assets/files/';
+  if($iY>=$startY && $iY<($startY+$limitY)) {
+    $domain = 'https://instrukciya-primeneniyu.com';
+    $pqaurl_autor = pq($a_urlAutor);
+    $urlAutor = $domain.$pqaurl_autor->attr('href');
+    echo $urlAutor;
+    $template = 4;
+    $parent = 1;
+    $publiched = 1;
+    //$media_dir = 'assets/files/';
 
-//     // curl запрос
-//     $ch = curl_init(); 
-//     curl_setopt($ch, CURLOPT_URL, trim($urlAutor)); 
-//     curl_setopt($ch, CURLOPT_HEADER, false); 
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-//     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
-//     $autorPage = curl_exec($ch); 
-//     curl_close($ch);
+    // curl запрос
+    $ch = curl_init(); 
+    curl_setopt($ch, CURLOPT_URL, trim($urlAutor)); 
+    curl_setopt($ch, CURLOPT_HEADER, false); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
+    $autorPage = curl_exec($ch); 
+    curl_close($ch);
 
-//     // парсинг
-//     $autorDocument = phpQuery::newDocument($autorPage);
-//     $a_urls = $autorDocument->find('.entry-title a');
+    // парсинг
+    $autorDocument = phpQuery::newDocument($autorPage);
+    $a_urls = $autorDocument->find('.entry-title a');
 
 //     foreach($a_urls as $a_url) {
 
@@ -86,9 +86,9 @@ echo $a_listUrls;
 //         );
 //         $id = $doc->newDocument($fields);
 //     } 
-//   }
-//   $iY = $iY+1;
+  }
+  $iY = $iY+1;
   
-// }
+}
     
 return $output;
