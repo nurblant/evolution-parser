@@ -25,7 +25,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30); 
 $autorsListPage = curl_exec($ch); 
 curl_close($ch);
-
+echo "Hi";
 // парсинг
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('.entry-content li.menu-item a');
