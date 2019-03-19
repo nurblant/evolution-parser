@@ -17,7 +17,7 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 $autorsList = 'http://zonanot.ru/notespiano/classika';
 $startY = 21;
 $limitY = 30;
-// curl запрос
+// curl запросs
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, trim($autorsList)); 
 curl_setopt($ch, CURLOPT_HEADER, false); 
