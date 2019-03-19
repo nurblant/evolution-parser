@@ -16,7 +16,7 @@ include_once ($modx->config["base_path"].'assets/snippets/evolution-parser/libs/
 
 $autorsList = 'https://instrukciya-primeneniyu.com/podbor-preparatov';
 $startY = 0;
-$limitY = 1;
+$limitY = 3;
 // curl запрос
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, trim($autorsList)); 
@@ -30,7 +30,7 @@ curl_close($ch);
 $autorsListDocument = phpQuery::newDocument($autorsListPage);
 $a_listUrls = $autorsListDocument->find('li.menu-item a');
 echo $a_listUrls;
-$iY = 0;
+//$iY = 0;
 // foreach($a_listUrls as $a_urlAutor) {
   
 //   if($iY>=$startY && $iY<($startY+$limitY)) {
